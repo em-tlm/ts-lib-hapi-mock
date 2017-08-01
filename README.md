@@ -71,6 +71,8 @@ __Parameters__
 
   + `path`: _(required)_ a string that represents the path value of a route.  This isn't really used for anything other than to give value to the `path` property on `Request` instances.
 
+  + `method`: _(required)_ a string that specifies the method being used for the route.
+
   + `handler`: _(required)_ the Hapi.js route handler to invoke.
 
   + `request`: _(optional)_ an object that defines default request behaviors.  Keys can be overridden when calling `inject()`.  This object can include the keys:
