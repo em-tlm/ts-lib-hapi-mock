@@ -5,7 +5,7 @@ Testing Hapi.js route handler logic can be difficult due to the need for a `Requ
 The `ts-hapi-mocks` library allows you to inject mocked `Request` and `Reply` objects directly into a route handler without creating an HTTP request, and more easily target specific edge cases in your code.
 
 > __Important Note__<br />
-This is an incomplete implementation of the Hapi.js request and reply interface.  This is very much a work and progress.  Focus has been placed on building out the pieces we are currently using.  Please ensure that you add anything not currently covered that you utilize in your handlers.
+This is an incomplete implementation of the Hapi.js request and reply interface.  This is very much a work in progress.  Focus has been placed on building out the pieces we are currently using.  Please ensure that you add anything not currently covered that you utilize in your handlers.
 
 ## Usage
 
@@ -55,7 +55,7 @@ describe('Handler', function() {
 });
 ```
 
-The `inject()` method will return the immediate result of route handler.  In the example above, the assumption is being made that `Handler.prototype.find()` returns a `Promise`.  Currently, this is the only way to work with asynchronous operations in the `ts-hapi-mocks` module.
+The `inject()` method will return the immediate result of route handler.  In the example above, the assumption is being made that `Handler.prototype.findOne()` returns a `Promise`.  Currently, this is the only way to work with asynchronous operations in the `ts-hapi-mocks` module.
 
 ## API
 
