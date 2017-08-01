@@ -21,7 +21,7 @@ Then inject requests into a route handler function using the `RequestContext` ob
 const assert = require('chai').assert;
 const { RequestContext } = require('ts-hapi-mocks');
 
-const Handler = require('./path/to/hanlder');
+const Handler = require('./path/to/handler');
 
 describe('Handler', function() {
   beforeEach(function() {
