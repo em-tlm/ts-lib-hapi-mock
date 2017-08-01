@@ -35,7 +35,8 @@ describe('Handler', function() {
     beforeEach(function() {
       this.context = new RequestContext({
         path: '/my/route',
-        handler: this.handler.findOne
+        handler: this.handler.findOne,
+        method: 'get',
       });
     });
 

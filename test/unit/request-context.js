@@ -17,6 +17,17 @@ describe('RequestContext', () => {
     it('should throw if no path provided', () => {
       assert.throws(() => {
         const context = new RequestContext({
+          method: 'get',
+          handler: () => {},
+        });
+        assert.isNotOk(context);
+      });
+    });
+
+    it('should throw if no method provided', () => {
+      assert.throws(() => {
+        const context = new RequestContext({
+          metpath: '/test',
           handler: () => {},
         });
         assert.isNotOk(context);
@@ -27,6 +38,7 @@ describe('RequestContext', () => {
       assert.throws(() => {
         const context = new RequestContext({
           path: '/test',
+          method: 'get',
         });
         assert.isNotOk(context);
       });
@@ -36,6 +48,7 @@ describe('RequestContext', () => {
       assert.throws(() => {
         const context = new RequestContext({
           path: '/test',
+          method: 'get',
           handler: 42,
         });
         assert.isNotOk(context);
@@ -46,6 +59,7 @@ describe('RequestContext', () => {
       assert.throws(() => {
         const context = new RequestContext({
           path: '/test',
+          method: 'get',
           handler: () => {},
         });
         assert.isNotOk(context);
@@ -56,6 +70,7 @@ describe('RequestContext', () => {
       assert.throws(() => {
         const context = new RequestContext({
           path: '/test',
+          method: 'get',
           handler: () => {},
           request: 42,
         });
@@ -68,6 +83,7 @@ describe('RequestContext', () => {
     it('should throw if options not an object', () => {
       const context = new RequestContext({
         path: '/path',
+        method: 'get',
         handler: () => {},
       });
 
@@ -79,6 +95,7 @@ describe('RequestContext', () => {
     it('should throw if options.request not an object', () => {
       const context = new RequestContext({
         path: '/path',
+        method: 'get',
         handler: () => {},
       });
 
@@ -92,6 +109,7 @@ describe('RequestContext', () => {
     it('should throw if options.request invalid', () => {
       const context = new RequestContext({
         path: '/path',
+        method: 'get',
         handler: () => {},
       });
 
@@ -105,6 +123,7 @@ describe('RequestContext', () => {
     it('should inject instance of Request', () => {
       const context = new RequestContext({
         path: '/path',
+        method: 'get',
         handler: (req) => {
           assert.instanceOf(req, Request);
         },
@@ -116,6 +135,7 @@ describe('RequestContext', () => {
     it('should inject reply interface', () => {
       const context = new RequestContext({
         path: '/path',
+        method: 'get',
         handler: (req, reply) => {
           assert.isOk(reply);
         },
@@ -127,6 +147,7 @@ describe('RequestContext', () => {
     it('should inject reply interface as function', () => {
       const context = new RequestContext({
         path: '/path',
+        method: 'get',
         handler: (req, reply) => {
           assert.isFunction(reply);
         },
@@ -138,6 +159,7 @@ describe('RequestContext', () => {
     it('should inject reply interface with continue method', () => {
       const context = new RequestContext({
         path: '/path',
+        method: 'get',
         handler: (req, reply) => {
           assert.isFunction(reply.continue);
         },
@@ -149,6 +171,7 @@ describe('RequestContext', () => {
     it('should inject reply interface with close method', () => {
       const context = new RequestContext({
         path: '/path',
+        method: 'get',
         handler: (req, reply) => {
           assert.isFunction(reply.close);
         },
@@ -160,6 +183,7 @@ describe('RequestContext', () => {
     it('should inject reply interface with entity method', () => {
       const context = new RequestContext({
         path: '/path',
+        method: 'get',
         handler: (req, reply) => {
           assert.isFunction(reply.entity);
         },
@@ -171,6 +195,7 @@ describe('RequestContext', () => {
     it('should inject reply interface with redirect method', () => {
       const context = new RequestContext({
         path: '/path',
+        method: 'get',
         handler: (req, reply) => {
           assert.isFunction(reply.redirect);
         },
@@ -182,6 +207,7 @@ describe('RequestContext', () => {
     it('should throw when reply is called with more than two args', () => {
       const context = new RequestContext({
         path: '/path',
+        method: 'get',
         handler: (req, reply) => {
           assert.isFunction(reply);
         },
@@ -193,6 +219,7 @@ describe('RequestContext', () => {
     it('should return instance of Response on reply', () => {
       const context = new RequestContext({
         path: '/path',
+        method: 'get',
         handler: (req, reply) => {
           const res = reply();
           assert.instanceOf(res, Response);
@@ -205,6 +232,7 @@ describe('RequestContext', () => {
     it('should pass provided source to Response on reply', () => {
       const context = new RequestContext({
         path: '/path',
+        method: 'get',
         handler: (req, reply) => {
           const res = reply(42);
           assert.strictEqual(res.source, 42);
@@ -217,6 +245,7 @@ describe('RequestContext', () => {
     it('should pass bound request to Response on reply', () => {
       const context = new RequestContext({
         path: '/path',
+        method: 'get',
         handler: (req, reply) => {
           const res = reply(42);
           assert.strictEqual(res.request, req);
@@ -229,6 +258,7 @@ describe('RequestContext', () => {
     it('should use second arg for source on reply', () => {
       const context = new RequestContext({
         path: '/path',
+        method: 'get',
         handler: (req, reply) => {
           const res = reply(false, 42);
           assert.strictEqual(res.source, 42);
