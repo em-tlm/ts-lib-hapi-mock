@@ -42,7 +42,7 @@ describe('Handler', function() {
 
     it('should return 200 status code on success', function(done) {
       this.context.inject()
-        .then((request) => {
+        .then(() => {
           assert.strictEqual(this.context.response.statusCode, 200);
           done();
         })
