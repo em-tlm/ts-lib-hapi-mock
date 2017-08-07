@@ -1,0 +1,36 @@
+{
+  "name": "ts-hapi-mock",
+  "longName": "ts-hapi-mock",
+  "description": "Utilities for mocking Hapi.js requests in unit tests.",
+  "version": "1.0.0",
+  "dependencies": {
+    "elv": "^2.0.0",
+    "hoek": "^4.2.0",
+    "joi": "^10.6.0"
+  },
+  "devDependencies": {
+    "chai": "^4.0.2",
+    "eslint": "^3.19.0",
+    "eslint-config-tetrascience": "tetrascience/eslint-config-tetrascience",
+    "mocha": "^3.4.2",
+    "nyc": "^11.0.3"
+  },
+  "keywords": [
+    "hapi",
+    "request",
+    "mock",
+    "unit",
+    "test"
+  ],
+  "license": "MIT",
+  "main": "./lib",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tetrascience/ts-lib-hapi-mock"
+  },
+  "scripts": {
+    "lint": "eslint ./*",
+    "test": "NODE_ENV=test nyc --reporter=lcov  --reporter=text mocha --recursive ./test"
+  }
+}
